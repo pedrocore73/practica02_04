@@ -1,0 +1,362 @@
+
+/* Reseteo */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Generales */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: #67666e;
+}
+
+hr {
+    margin-top: 0.5em;
+}
+
+button {
+    background-color: #008489;
+    color: white;
+    border: 1px solid #008489;
+    font-size: 1.2em;
+    padding: 0.5em 1em;
+    border-radius: 0.3em;
+    transition: all 400ms ease-in-out;
+}
+
+@media (max-width: 440px) {
+    button {
+        width: 100%;
+    }
+}
+
+button.outline {
+    border: 1px solid #008489;
+    background-color: white;
+    color: #008489;
+}
+
+button.warning {
+    background-color: #e9c018;
+    border: 1px solid #e9c018;
+}
+
+button.danger {
+    background-color: #e93718;
+    border: 1px solid #e93718;
+}
+
+button:hover {
+    background-color: #005c5f;
+    cursor: pointer;
+}
+
+button.outline:hover {
+    color: white;
+}
+
+button.wait:hover {
+    background-color: #008489;
+    cursor: default;
+}
+
+
+button.warning:hover {
+    background-color: #b89712;
+    border: 1px solid #b89712;
+}
+
+button.danger:hover {
+    background-color: #b92c13;
+    border: 1px solid #b92c13;
+}
+
+button[disabled] {
+    background-color: rgba(0, 132, 137, 0.3);
+    border: 1px solid rgba(0, 132, 137, 0.3);
+    color: white;
+    cursor: not-allowed;
+}
+
+button.jumbo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 2em;
+}
+
+button.jumbo img {
+    height: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+button.jumbo.orange {
+    background-color: #c86101;
+    border: 1px solid #c86101;
+}
+
+button.jumbo.orange:hover {
+    background-color: #a04e01;
+    border: 1px solid #a04e01;
+}
+
+button.jumbo.crimson {
+    background-color: #c81801;
+    border: 1px solid #c81801;
+}
+
+button.jumbo.crimson:hover {
+    background-color: #971201;
+    border: 1px solid #971201;
+}
+
+button.jumbo.blue {
+    background-color: #0157c8;
+    border: 1px solid #0157c8;
+}
+
+button.jumbo.blue:hover {
+    background-color: #0147a3;
+    border: 1px solid #0147a3;
+}
+
+button.jumbo.brown {
+    background-color: #a14901;
+    border: 1px solid #a14901;
+}
+
+button.jumbo.brown:hover {
+    background-color: #813b01;
+    border: 1px solid #813b01;
+}
+
+button.jumbo.violet {
+    background-color: #a1016c;
+    border: 1px solid #a1016c;
+}
+
+button.jumbo.violet:hover {
+    background-color: #850159;
+    border: 1px solid #850159;
+}
+
+.spinner {
+    animation: spin-animation 1500ms infinite linear;
+}
+
+.m-l-small {
+    margin-left: 0.5em;
+}
+
+.m-r-small {
+    margin-right: 0.5em;
+}
+
+/* Animaciones */
+
+@keyframes spin-animation {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(359deg);
+    }
+}
+
+/* Layout */
+
+.fila {
+    width: 100%;
+    display: flex;
+    padding: 0.5em;
+}
+
+.col-100 {
+    width: 100%;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+.col-100.check {
+    flex-direction: row;
+    align-items: center;
+}
+
+.col-100.buttons {
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.col-100.titulos {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.col-50 {
+    width: 50%;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 720px) {
+    .fila {
+        flex-direction: column;
+    }
+
+    .col-50 {
+        width: 100%;
+    }
+}
+
+#welcome {
+    display: none;
+}
+
+/* Formularios */
+
+form {
+    background-color: white;
+    width: 40%;
+    margin: 2em auto;
+    padding: 0.5em 1em;
+    border-radius: 0.5em;
+}
+
+@media (max-width: 1080px) {
+    form {
+        width: 60%;
+    }
+}
+
+@media (max-width: 720px) {
+    form {
+        width: 80%;
+    }
+}
+
+@media (max-width: 440px) {
+    form {
+        width: calc(100% - 2em);
+    }
+}
+
+label {
+    font-size: 0.9em;
+    text-transform: uppercase;
+    margin-bottom: 0.5em;
+}
+
+input {
+    padding: 0.5em;
+    font-size: 1.2em;
+    color: #67666e;
+    border-radius: 0.3em;
+    border: 1px solid #67666e;
+}
+
+input[type="checkbox"] {
+    margin-right: 1em;
+}
+
+input.password {
+    background-color: rgb(235, 235, 228);
+}
+
+select {
+    padding: 0.5em 0.5em 0.5em 2em;
+    font-size: 1.2em;
+    color: #67666e;
+    border-radius: 0.3em;
+    border: 1px solid #67666e;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('./assets/chevron-down.svg');
+    background-repeat: no-repeat;
+    background-size: 28px 28px;
+    background-position: 5px 8px;
+}
+
+/* Modals */
+
+#overlay {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    opacity: 0;
+    transition: all 600ms ease-in-out;
+}
+
+#modal {
+    background-color: white;
+    width: 60vw;
+    height: 80vh;
+    z-index: 10;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 0.5em;
+    overflow: auto;
+    display: none;
+    opacity: 0;
+    transition: all 600ms ease-in-out;
+}
+
+@media (max-width: 720px) {
+    #modal {
+        width: 80vw;
+    }
+}
+
+@media (max-width: 440px) {
+    #modal {
+        width: calc(100vw - 2em);
+    }
+}
+
+/* Tablas */
+
+table {
+    width: 100%;
+}
+
+table th {
+    border: 2px solid #008489;
+    background-color: #008489;
+    color: white;
+    padding: 0.5em 1em;
+}
+
+table.usuarios th {
+    text-align: left;
+}
+
+table.usuarios th:nth-child(4),
+table.usuarios td:nth-child(4) {
+    background-color: transparent;
+    border: none;
+}
+
+table td {
+    padding: 0.5em 1em;
+}
+
+table tr:nth-child(even) td {
+    border: 2px solid rgba(0, 132, 137, 0.3);
+}
+
+table tr:nth-child(odd) td {
+    background-color: rgba(0, 132, 137, 0.3);
+}

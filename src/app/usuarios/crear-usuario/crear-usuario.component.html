@@ -1,0 +1,51 @@
+<div class="fila">
+    <div class="col-100">
+        <h1>Nuevo usuario</h1>
+    </div>
+</div>
+<form [formGroup]="formUser" (ngSubmit)="registrarUser()">
+    <div class="fila">
+        <div class="col-50">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" formControlName="nombre" #nombre>
+        </div>
+        <div class="col-50">
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" formControlName="apellidos">
+        </div>
+    </div>
+    <div class="fila">
+        <div class="col-100">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" formControlName="email">
+        </div>
+    </div>
+    <div class="fila">
+        <div class="col-100">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" formControlName="password">
+        </div>
+    </div>
+    <div class="fila">
+        <div class="col-100">
+            <label for="rol">Rol</label>
+            <select id="rol" formControlName="rol">
+                <option value="admin">admin</option>
+                <option value="empl">empl</option>
+                <option value="cfo">cfo</option>
+                <option value="ceo">ceo</option>
+            </select>
+        </div>
+    </div>
+    <div class="fila">
+        <div class="col-100 buttons">
+            <button class="outline" routerLink="/listado-usuarios">Cancelar</button>
+            <button type="submit" class="m-l-small">Crear usuario</button>
+        </div>
+    </div>
+    <div class="fila">
+        <div class="col-100">
+            <p>{{mensaje}}</p>
+        </div>
+    </div>
+</form>

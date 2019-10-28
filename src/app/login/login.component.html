@@ -1,0 +1,27 @@
+<form [formGroup]="formLogin" (ngSubmit)="sendLogin()">
+    <div class="fila">
+        <div class="col-100">
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" formControlName="email">
+        </div>
+    </div>
+    <div class="fila">
+        <div class="col-100">
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" formControlName="password">
+        </div>
+    </div>
+    <div class="fila">
+        <div class="col-100 button">
+            <button [ngClass]="{'wait': esperando}">
+                <span *ngIf="!esperando">Iniciar sesión</span>
+                <span *ngIf="esperando"><img class="spinner" src="assets/refresh-cw.svg" alt=""></span>
+            </button>
+        </div>
+    </div>
+    <div class="fila">
+        <div class="col-100">
+            <p>{{mensaje}}</p>
+        </div>
+    </div>
+</form>

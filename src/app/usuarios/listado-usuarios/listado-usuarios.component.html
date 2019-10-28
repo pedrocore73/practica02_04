@@ -1,0 +1,36 @@
+<div class="fila">
+    <div class="col-100 titulos">
+        <h1>Listado de usuarios</h1>
+        <div>
+            <button class="outline" routerLink="/inicio">Volver</button>
+            <button class="m-l-small" routerLink="/crear-usuario">
+                <img src="assets/user-plus.svg" alt="">
+            </button>
+        </div>
+    </div>
+</div>
+<div class="fila">
+    <div class="col-100">
+        <table class="usuarios">
+            <tr>
+                <th>Nombre y apellidos</th>
+                <th>Correo electrónico</th>
+                <th>Rol</th>
+                <th></th>
+            </tr>
+            <tr *ngFor="let usuario of usuarios">
+                <td>{{usuario.nombre}} {{usuario.apellidos}}</td>
+                <td>{{usuario.email}}</td>
+                <td>{{usuario.rol}}</td>
+                <td>
+                    <button class="warning" routerLink="/editar-usuario/{{usuario._id}}">
+                        <img src="assets/edit.svg">
+                    </button>
+                    <button class="danger m-l-small" (click)="eliminarUsuario(usuario._id)">
+                        <img src="assets/trash.svg">
+                    </button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
