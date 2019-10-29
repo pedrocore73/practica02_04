@@ -34,7 +34,6 @@ export class LoginComponent implements OnInit {
     this.rbacService.login(auth)
             .subscribe((res: any)=>{
               this.esperando = false;
-              this.router.navigate(['/inicio']);
             }, (error: any)=>{
               this.esperando = false;
               this.mensaje = error.error.mensaje;

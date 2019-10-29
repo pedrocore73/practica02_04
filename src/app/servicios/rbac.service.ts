@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,13 @@ export class RbacService {
   urlLogin = environment.urlLogin;
   urlAutorizaciones = environment.urlAutorizaciones;
   usuario: any;
+  permisos: any;
+
+  private permisosIn = new BehaviorSubject<any>({permisos: this.permisos});
+
+  get isPermisosIn() {
+    return this.permisosIn.asObservable();
+  }
 
   constructor(private http: HttpClient,
               private router: Router) {
@@ -32,6 +40,7 @@ export class RbacService {
           this.usuario = res.usuario;
           localStorage.setItem('id', this.usuario._id);
           this.asignaPermisos(this.usuario.rol);
+          this.router.navigate(['/inicio']);
         }
         return res;
       })
@@ -51,10 +60,27 @@ export class RbacService {
       })
     ).subscribe((res: any)=>{
       let autorizaciones = res.autorizaciones;
-      console.log(autorizaciones);
+      switch(rol) {
+        case 'admin':
+          this.permisos = autorizaciones.permisosAdmin;
+          break;
+        case 'empl':
+          this.permisos = autorizaciones.permisosEmpl;
+          break;
+        case 'cfo':
+          this.permisos = autorizaciones.permisosCfo;
+          break;
+        case 'ceo':
+          this.permisos = autorizaciones.permisosCeo;
+          break;
+        default:
+          break;  
+      }
+      this.permisosIn.next({permisos: this.permisos});
     }, (error: any)=>{
       console.log(error);
     })
   }
+
 
 }

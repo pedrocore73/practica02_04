@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RbacService } from '../servicios/rbac.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-inicio',
@@ -8,7 +9,18 @@ import { RbacService } from '../servicios/rbac.service';
 })
 export class InicioComponent implements OnInit {
 
-  constructor(private rbacService: RbacService) { }
+  permisos: any;
+  subscripPermisos: Subscription;
+
+  constructor(private rbacService: RbacService) { 
+    this.subscripPermisos = this.rbacService.isPermisosIn
+                                    .subscribe((data:any)=>{
+                                      this.permisos = data.permisos;
+                                      console.log(this.permisos);
+                                    }, (error: any)=>{
+                                      console.log(error);
+                                    })
+  }
 
   ngOnInit() {
   }

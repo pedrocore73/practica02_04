@@ -9,23 +9,23 @@
     </div>
     <div class="fila">
         <div class="col-100 titulos">
-            <button class="jumbo orange">
+            <button class="jumbo orange" *ngIf="permisos?.includes('ventas')">
                 <img src="assets/shopping-cart.svg" alt="">
                 Ventas
             </button>
-            <button class="jumbo crimson">
+            <button class="jumbo crimson" *ngIf="permisos?.includes('logistica')">
                 <img src="assets/calendar.svg" alt="">
                 Logística
             </button>
-            <button class="jumbo blue">
+            <button class="jumbo blue" *ngIf="permisos?.includes('finanzas')">
                 <img src="assets/dollar-sign.svg" alt="">
                 Finanzas
             </button>
-            <button class="jumbo brown">
+            <button class="jumbo brown" *ngIf="permisos?.includes('rrhh')">
                 <img src="assets/users.svg" alt="">
                 RRHH
             </button>
-            <button class="jumbo violet" routerLink="/listado-usuarios">
+            <button class="jumbo violet" *ngIf="permisos?.includes('usuarios')" routerLink="/listado-usuarios">
                 <img src="assets/database.svg" alt="">
                 Usuarios
             </button>
