@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class RbacService {
 
   urlLogin = environment.urlLogin;
+  urlAutorizaciones = environment.urlAutorizaciones;
   usuario: any;
 
   constructor(private http: HttpClient,
@@ -30,6 +31,7 @@ export class RbacService {
         if(res.usuario) {
           this.usuario = res.usuario;
           localStorage.setItem('id', this.usuario._id);
+          this.asignaPermisos(this.usuario.rol);
         }
         return res;
       })
@@ -40,6 +42,19 @@ export class RbacService {
     this.usuario = {};
     localStorage.removeItem('id');
     this.router.navigate(['/']);
+  }
+
+  asignaPermisos(rol) {
+    return this.http.get(this.urlAutorizaciones).pipe(
+      map((resp: any)=>{
+        return resp;
+      })
+    ).subscribe((res: any)=>{
+      let autorizaciones = res.autorizaciones;
+      console.log(autorizaciones);
+    }, (error: any)=>{
+      console.log(error);
+    })
   }
 
 }
