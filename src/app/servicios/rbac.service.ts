@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { UsuariosService } from './usuarios.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,14 +23,22 @@ export class RbacService {
   }
 
   constructor(private http: HttpClient,
-              private router: Router) {
+              private router: Router,
+              private usuariosService: UsuariosService) {
     this.cargarEstado();
   }
 
   cargarEstado() {
     let id = localStorage.getItem('id');
     if(id){
-      this.router.navigate(['/inicio']);
+      this.usuariosService.getUsuario(id)
+                  .subscribe((res: any)=>{
+                    this.usuario = res.usuario;
+                    this.asignaPermisos(this.usuario.rol);
+                    this.router.navigate(['/inicio']);
+                  }, (error: any)=>{
+                    console.log(error);
+                  })
     }
   }
 
