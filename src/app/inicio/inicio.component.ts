@@ -16,7 +16,6 @@ export class InicioComponent implements OnInit {
     this.subscripPermisos = this.rbacService.isPermisosIn
                                     .subscribe((data:any)=>{
                                       this.permisos = data.permisos;
-                                      console.log(this.permisos);
                                     }, (error: any)=>{
                                       console.log(error);
                                     })
