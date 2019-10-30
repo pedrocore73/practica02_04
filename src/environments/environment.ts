@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   urlLogin: 'http://localhost:3000/login',  //end point
   urlUsuarios: 'http://localhost:3000/usuario',
-  urlAutorizaciones: 'http://localhost:3000/autorizaciones'
+  urlAutorizaciones: 'http://localhost:3000/autorizaciones',
+  urlSesiones: 'http://localhost:3000/sesion'
 };
 
 /*

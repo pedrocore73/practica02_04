@@ -5,6 +5,7 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { UsuariosService } from './usuarios.service';
+import { SesionesService } from './sesiones.service';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,8 @@ export class RbacService {
 
   constructor(private http: HttpClient,
               private router: Router,
-              private usuariosService: UsuariosService) {
+              private usuariosService: UsuariosService,
+              private sesionesService: SesionesService) {
     this.cargarEstado();
   }
 
@@ -49,6 +51,7 @@ export class RbacService {
           this.usuario = res.usuario;
           localStorage.setItem('id', this.usuario._id);
           this.asignaPermisos(this.usuario.rol);
+          this.crearSesion();
           this.router.navigate(['/inicio']);
         }
         return res;
@@ -57,6 +60,7 @@ export class RbacService {
   }
 
   logout() {
+    this.cerrarSesion();
     this.usuario = {};
     localStorage.removeItem('id');
     this.router.navigate(['/']);
@@ -89,6 +93,34 @@ export class RbacService {
     }, (error: any)=>{
       console.log(error);
     })
+  }
+
+  crearSesion() {
+    const sesion = {
+      idUsuario: this.usuario._id,
+      login: new Date()
+    }
+    this.sesionesService.enviarSesion(sesion)
+                .subscribe((res: any)=>{
+                  console.log(res);
+                }, (error: any)=>{
+                  console.log(error);
+                })
+
+  }
+
+  cerrarSesion() {
+    const sesion = {
+      idUsuario: this.usuario._id,
+      logout: new Date()
+    }
+    this.sesionesService.enviarSesion(sesion)
+                .subscribe((res: any)=>{
+                  console.log(res);
+                }, (error: any)=>{
+                  console.log(error);
+                })
+
   }
 
 
