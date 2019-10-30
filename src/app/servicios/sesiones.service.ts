@@ -12,6 +12,14 @@ export class SesionesService {
 
   constructor(private http: HttpClient) { }
 
+  getSesiones(id){
+    return this.http.get(this.urlSesiones + '/' + id).pipe(
+      map((resp: any)=>{
+        return resp;
+      })
+    )
+  }
+
   enviarSesion(sesion) {
     return this.http.post(this.urlSesiones, sesion).pipe(
       map((resp: any)=>{

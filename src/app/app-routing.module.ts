@@ -5,6 +5,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { ListadoUsuariosComponent } from './usuarios/listado-usuarios/listado-usuarios.component';
 import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
+import { ListadoSesionesComponent } from './sesiones/listado-sesiones/listado-sesiones.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: 'inicio', component: InicioComponent},
   {path: 'listado-usuarios', component: ListadoUsuariosComponent},
   {path: 'crear-usuario', component: CrearUsuarioComponent},
-  {path: 'editar-usuario/:id', component: EditarUsuarioComponent}
+  {path: 'editar-usuario/:id', component: EditarUsuarioComponent},
+  {path: 'listado-sesiones/:id', component: ListadoSesionesComponent}
 ];
 
 @NgModule({

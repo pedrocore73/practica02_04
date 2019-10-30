@@ -50,6 +50,11 @@ button.danger {
     border: 1px solid #e93718;
 }
 
+button.info {
+    background-color: #187ae9;
+    border: 1px solid #187ae9;
+}
+
 button:hover {
     background-color: #005c5f;
     cursor: pointer;
@@ -73,6 +78,11 @@ button.warning:hover {
 button.danger:hover {
     background-color: #b92c13;
     border: 1px solid #b92c13;
+}
+
+button.info:hover {
+    background-color: #1362bb;
+    border: 1px solid #1362bb;
 }
 
 button[disabled] {
