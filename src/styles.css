@@ -360,6 +360,11 @@ label {
     margin-bottom: 0.5em;
 }
 
+label span.invalid {
+    font-size: 0.8em;
+    color: crimson;
+}
+
 input {
     padding: 0.5em;
     font-size: 1.2em;

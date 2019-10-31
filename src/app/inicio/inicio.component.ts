@@ -22,6 +22,7 @@ export class InicioComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   logOut() {

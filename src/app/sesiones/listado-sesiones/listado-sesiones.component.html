@@ -1,6 +1,6 @@
 <div class="fila">
     <div class="col-100 titulos">
-        <h1>Sesiones</h1>
+        <h1>Sesiones de {{nombre}} {{apellidos}}</h1>
         <div>
             <button class="outline" routerLink="/listado-usuarios">Volver</button>
         </div>
@@ -12,12 +12,12 @@
             <tr>
                 <th>Inicio</th>
                 <th>Fin</th>
-                <th>Duracion</th>
+                <th>Duración</th>
             </tr>
             <tr *ngFor="let sesion of sesiones">
                 <td>{{sesion.login | date: 'd/MM/yy, HH:mm'}}</td>
                 <td>{{sesion.logout | date: 'd/MM/yy, HH:mm'}}</td>
-                <td></td>
+                <td>{{sesion.duracion}}</td>
             </tr>
         </table>
     </div>

@@ -36,8 +36,9 @@ export class RbacService {
       this.usuariosService.getUsuario(id)
                   .subscribe((res: any)=>{
                     this.usuario = res.usuario;
+                    console.log(this.usuario);
                     this.asignaPermisos(this.usuario.rol);
-                    this.router.navigate(['/inicio']);
+                    this.crearSesion(this.usuario._id);
                   }, (error: any)=>{
                     console.log(error);
                   })
@@ -51,8 +52,8 @@ export class RbacService {
           this.usuario = res.usuario;
           localStorage.setItem('id', this.usuario._id);
           this.asignaPermisos(this.usuario.rol);
-          this.crearSesion();
-          this.router.navigate(['/inicio']);
+          this.crearSesion(this.usuario._id);
+          // this.router.navigate(['/inicio']);
         }
         return res;
       })
@@ -95,18 +96,19 @@ export class RbacService {
     })
   }
 
-  crearSesion() {
+  crearSesion(id) {
     const sesion = {
-      idUsuario: this.usuario._id,
+      idUsuario: id,
       login: new Date()
     }
     this.sesionesService.enviarSesion(sesion)
                 .subscribe((res: any)=>{
                   console.log(res);
+                  
                 }, (error: any)=>{
                   console.log(error);
                 })
-
+    this.router.navigate(['/inicio']);
   }
 
   cerrarSesion() {

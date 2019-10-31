@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RbacService } from '../servicios/rbac.service';
 import { Router } from '@angular/router';
 
@@ -20,9 +20,10 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {
     this.formLogin = this.ff.group({
-      email: '',
-      password: ''
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      password: ['']
     })
+    console.log(this.formLogin.get('email'));
   }
 
   sendLogin() {

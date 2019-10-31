@@ -1,7 +1,16 @@
 <form [formGroup]="formLogin" (ngSubmit)="sendLogin()">
     <div class="fila">
         <div class="col-100">
-            <label for="email">Correo electrónico</label>
+            <label for="email">
+                Correo electrónico
+                <span class="invalid" *ngIf="formLogin.controls.email.invalid">
+                    Introduzca un correo electrónico
+                </span>
+            </label>
+            <!-- Estados campos con validación
+            pristine dirty // El usuario no ha utilizado nunca el campo o lo ha utilizado por primera vez 
+            untouched touched // Cuando el usuario no ha salido del campo o ha salido del campo 
+            invalid valid // Si está inválido o válido -->
             <input type="email" id="email" formControlName="email">
         </div>
     </div>

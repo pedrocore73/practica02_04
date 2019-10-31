@@ -29,7 +29,8 @@
                     <button class="danger m-l-small" (click)="eliminarUsuario(usuario._id)">
                         <img src="assets/trash.svg">
                     </button>
-                    <button class="info m-l-small" routerLink="/listado-sesiones/{{usuario._id}}">
+                    <button class="info m-l-small" 
+                            routerLink="/listado-sesiones/{{usuario._id}}/{{usuario.nombre}}/{{usuario.apellidos}}">
                         <img src="assets/clock.svg">
                     </button>
                 </td>
