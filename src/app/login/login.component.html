@@ -16,7 +16,12 @@
     </div>
     <div class="fila">
         <div class="col-100">
-            <label for="password">Contraseña</label>
+            <label for="password">
+                Contraseña
+                <span class="invalid" *ngIf="formLogin.controls.password.invalid">
+                    La contraseña debe tener al menos una mayúscula, minúscula y número
+                </span>
+            </label>
             <input type="password" id="password" formControlName="password">
         </div>
     </div>
