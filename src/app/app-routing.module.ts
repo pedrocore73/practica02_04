@@ -6,15 +6,17 @@ import { ListadoUsuariosComponent } from './usuarios/listado-usuarios/listado-us
 import { CrearUsuarioComponent } from './usuarios/crear-usuario/crear-usuario.component';
 import { EditarUsuarioComponent } from './usuarios/editar-usuario/editar-usuario.component';
 import { ListadoSesionesComponent } from './sesiones/listado-sesiones/listado-sesiones.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'inicio', component: InicioComponent},
-  {path: 'listado-usuarios', component: ListadoUsuariosComponent},
-  {path: 'crear-usuario', component: CrearUsuarioComponent},
-  {path: 'editar-usuario/:id', component: EditarUsuarioComponent},
-  {path: 'listado-sesiones/:id/:nombre/:apellidos', component: ListadoSesionesComponent}
+  {path: 'listado-usuarios', component: ListadoUsuariosComponent, canActivate: [AuthGuard]},
+  {path: 'crear-usuario', component: CrearUsuarioComponent, canActivate: [AuthGuard]},
+  {path: 'editar-usuario/:id', component: EditarUsuarioComponent, canActivate: [AuthGuard]},
+  {path: 'listado-sesiones/:id/:nombre/:apellidos', component: ListadoSesionesComponent, canActivate: [AuthGuard]},
+  {path: '**', component: LoginComponent}
 ];
 
 @NgModule({

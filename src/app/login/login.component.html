@@ -3,7 +3,10 @@
         <div class="col-100">
             <label for="email">
                 Correo electrónico
-                <span class="invalid" *ngIf="formLogin.controls.email.invalid">
+                <span class="m-l-small" *ngIf="formLogin.controls.email.valid && validacion">
+                    <img src="assets/check-circle.svg">
+                </span>
+                <span class="invalid" *ngIf="formLogin.controls.email.invalid && validacion">
                     Introduzca un correo electrónico
                 </span>
             </label>
@@ -18,7 +21,10 @@
         <div class="col-100">
             <label for="password">
                 Contraseña
-                <span class="invalid" *ngIf="formLogin.controls.password.invalid">
+                <span class="m-l-small" *ngIf="formLogin.controls.password.valid && validacion">
+                    <img src="assets/check-circle.svg">
+                </span>
+                <span class="invalid" *ngIf="formLogin.controls.password.invalid && validacion">
                     La contraseña debe tener al menos una mayúscula, minúscula y número
                 </span>
             </label>
@@ -26,8 +32,18 @@
         </div>
     </div>
     <div class="fila">
+        <!-- Solución con botón deshabilitado
         <div class="col-100 button">
-            <button [ngClass]="{'wait': esperando}">
+            <button [ngClass]="{'wait': esperando}" [disabled]="formLogin.invalid">
+                <span *ngIf="!esperando">Iniciar sesión</span>
+                <span *ngIf="esperando"><img class="spinner" src="assets/refresh-cw.svg" alt=""></span>
+            </button>
+        </div> -->
+        <div class="col-100 button">
+            <button type="button" *ngIf="formLogin.invalid" (click)="showValidacion()">
+                Iniciar sesión
+            </button>
+            <button type="submit" [ngClass]="{'wait': esperando}" *ngIf="formLogin.valid">
                 <span *ngIf="!esperando">Iniciar sesión</span>
                 <span *ngIf="esperando"><img class="spinner" src="assets/refresh-cw.svg" alt=""></span>
             </button>

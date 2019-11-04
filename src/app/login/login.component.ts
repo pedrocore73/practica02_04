@@ -13,6 +13,7 @@ export class LoginComponent implements OnInit {
   formLogin: FormGroup;
   mensaje: string;
   esperando = false;
+  validacion = false;
 
   constructor(private ff: FormBuilder,
               private rbacService: RbacService,
@@ -39,6 +40,10 @@ export class LoginComponent implements OnInit {
               this.esperando = false;
               this.mensaje = error.error.mensaje;
             })
+  }
+
+  showValidacion() {
+    this.validacion = true;
   }
 
 }
